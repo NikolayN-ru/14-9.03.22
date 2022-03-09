@@ -1,22 +1,22 @@
 function getCardsArrayExpDate(json, date) {
   try {
-    let objDate = new Date(date.toString());
-    const cards = [];
+    const objDate = new Date(date.toString());
+    const candidate = [];
     json.CardInfo.forEach((el) => {
-      let arrNewStr = el.ExpDate.split("-");
-      let newArrNewStr = [];
-      newArrNewStr = newArrNewStr.concat(
+      const arrNewStr = el.ExpDate.split("-");
+      let arrMiddle = [];
+      arrMiddle = arrMiddle.concat(
         arrNewStr[1],
         arrNewStr[0],
         arrNewStr[2]
       );
-      let elDate = new Date(newArrNewStr);
+      const elDate = new Date(arrMiddle);
       if (objDate > elDate) {
-        cards.push(el.CardNumber.substr(-4));
+        candidate.push(el.CardNumber.substr(-4));
       }
     });
-    if (cards.length) {
-      console.log(cards);
+    if (candidate.length) {
+      console.log(candidate);
     } else {
       return null;
     }
